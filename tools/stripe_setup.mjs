@@ -125,6 +125,9 @@ async function main() {
       const params = {
         "line_items[0][price]": price.id,
         "line_items[0][quantity]": 1,
+        // Stay a plain processor: Stripe's merchant-of-record layer (Managed
+        // Payments) reviews/restricts catalog categories the same way Polar did.
+        "managed_payments[enabled]": "false",
         metadata: { sku: item.sku },
         after_completion: {
           type: "hosted_confirmation",
