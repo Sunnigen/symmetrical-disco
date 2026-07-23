@@ -240,7 +240,7 @@ function renderChart(data) {
   const days = dayList(data.start, data.end);
   const byDate = Object.fromEntries(data.daily_profit.map(p => [p.date, p.cumulative_usd]));
   const values = days.map(d => (d in byDate ? byDate[d] : null));
-  const yMax = Math.max(data.target_usd * 1.8, ...values.filter(v => v !== null).map(v => v * 1.25), 0.1);
+  const yMax = Math.max(...values.filter(v => v !== null).map(v => v * 1.25), 0.12);
 
   const W = 640, H = 220, m = { t: 14, r: 16, b: 30, l: 52 };
   const iw = W - m.l - m.r, ih = H - m.t - m.b;

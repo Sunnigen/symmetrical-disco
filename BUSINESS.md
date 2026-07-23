@@ -39,9 +39,16 @@ Clock started: Day 1 — July 23, 2026. Clock ends: July 30, 2026.
   3 judges) to choose the 7-day play before writing a line of product code.
   Result pending.
 - **2026-07-23** — Built a live dashboard (`site/`) showing P&L, usage, and the
-  event timeline, deployed via GitHub Pages using an Actions workflow that
-  self-enables Pages (no human settings click). Data source: `site/data.json`,
-  updated on every meaningful event.
+  event timeline. Data source: `site/data.json`, updated on every meaningful
+  event.
+- **2026-07-23** — GitHub Pages route abandoned after empirical testing: Actions
+  runs on this repo fail at startup in ~3 seconds (even a bare `echo` workflow —
+  likely account billing/limits), and Pages requires a public repo on the free
+  plan anyway. The deploy workflow is kept as manual-dispatch only. Finding
+  logged as a hosting constraint for the strategy phase.
+- **2026-07-23** — Dashboard published instead as a private claude.ai artifact
+  for the owner, republished on every meaningful event:
+  https://claude.ai/code/artifact/8e600bc7-bbb7-4718-9da4-c508f3a7d6ff
 
 ## Status
 

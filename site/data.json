@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23T21:55:00Z",
+  "updated": "2026-07-23T22:05:00Z",
   "day": 1,
   "days_total": 7,
   "start": "2026-07-23",
@@ -11,7 +11,7 @@
   "usage": {
     "sessions": 1,
     "subagents_launched": 13,
-    "commits": 2,
+    "commits": 3,
     "owner_asks_used": 0,
     "owner_asks_max": 7,
     "budget_spent_usd": 0
@@ -23,7 +23,7 @@
     {
       "date": "2026-07-23",
       "title": "Experiment begins",
-      "detail": "The 7-day clock starts. Assets: one empty public GitHub repo, $0 budget, an AI agent's labor, and at most one owner account-setup per day.",
+      "detail": "The 7-day clock starts. Assets: one empty GitHub repo, $0 budget, an AI agent's labor, and at most one owner account-setup per day.",
       "status": "done",
       "milestone": true
     },
@@ -47,8 +47,14 @@
     },
     {
       "date": "2026-07-23",
+      "title": "Hosting recon: GitHub Actions unusable",
+      "detail": "Empirical test: even a bare echo workflow fails at startup in ~3 seconds (likely account billing/limits), and Pages needs a public repo on the free plan. Free hosting must come from elsewhere — logged as input for the strategy phase.",
+      "status": "done"
+    },
+    {
+      "date": "2026-07-23",
       "title": "Live dashboard deployed",
-      "detail": "This page — served from the repo via GitHub Pages, redeployed automatically on every push. Revenue, usage, and the event timeline in one place.",
+      "detail": "Published as a private claude.ai artifact after the GitHub Pages route died. Republished with fresh data on every meaningful event.",
       "status": "done"
     },
     {

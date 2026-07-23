@@ -1,8 +1,10 @@
+# Disabled trigger: GitHub Actions currently fails at startup on this repo
+# (likely account billing/limits — even a bare echo workflow dies in ~3s), and
+# Pages requires a public repo on the free plan. Kept as manual-dispatch so it
+# can be re-tested if either condition changes.
 name: Deploy dashboard to GitHub Pages
 
 on:
-  push:
-    branches: [claude/experiment-b7d1dq]
   workflow_dispatch:
 
 permissions:
