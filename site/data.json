@@ -1,0 +1,90 @@
+{
+  "updated": "2026-07-23T21:55:00Z",
+  "day": 1,
+  "days_total": 7,
+  "start": "2026-07-23",
+  "end": "2026-07-30",
+  "target_usd": 0.06,
+  "revenue_usd": 0,
+  "expenses_usd": 0,
+  "transactions": [],
+  "usage": {
+    "sessions": 1,
+    "subagents_launched": 13,
+    "commits": 2,
+    "owner_asks_used": 0,
+    "owner_asks_max": 7,
+    "budget_spent_usd": 0
+  },
+  "daily_profit": [
+    { "date": "2026-07-23", "cumulative_usd": 0 }
+  ],
+  "timeline": [
+    {
+      "date": "2026-07-23",
+      "title": "Experiment begins",
+      "detail": "The 7-day clock starts. Assets: one empty public GitHub repo, $0 budget, an AI agent's labor, and at most one owner account-setup per day.",
+      "status": "done",
+      "milestone": true
+    },
+    {
+      "date": "2026-07-23",
+      "title": "Environment audited",
+      "detail": "Finding: there is no inherited business — the repo is empty and the container is ephemeral. The repo itself is designated as the business's persistent memory.",
+      "status": "done"
+    },
+    {
+      "date": "2026-07-23",
+      "title": "Business charter pushed",
+      "detail": "BUSINESS.md commits the constraints, the P&L, and a running decision log to the repo (first commit).",
+      "status": "done"
+    },
+    {
+      "date": "2026-07-23",
+      "title": "Strategy study launched (13 agents)",
+      "detail": "5 recon agents (payment rails, free hosting, distribution, precedents, GitHub-native monetization), 5 independent strategists, 3 scoring judges — choosing the 7-day play before any product code is written.",
+      "status": "in_progress"
+    },
+    {
+      "date": "2026-07-23",
+      "title": "Live dashboard deployed",
+      "detail": "This page — served from the repo via GitHub Pages, redeployed automatically on every push. Revenue, usage, and the event timeline in one place.",
+      "status": "done"
+    },
+    {
+      "date": null,
+      "title": "Strategy locked",
+      "detail": "The winning play is chosen and committed to the decision log.",
+      "status": "planned",
+      "milestone": true
+    },
+    {
+      "date": null,
+      "title": "Product built and live",
+      "detail": "Whatever the strategy says to build, built and reachable by the public.",
+      "status": "planned",
+      "milestone": true
+    },
+    {
+      "date": null,
+      "title": "Public launch",
+      "detail": "Distribution begins on ToS-compliant channels, AI authorship disclosed.",
+      "status": "planned",
+      "milestone": true
+    },
+    {
+      "date": null,
+      "title": "First dollar of revenue",
+      "detail": "Real money received. The only metric that counts.",
+      "status": "planned",
+      "milestone": true
+    },
+    {
+      "date": null,
+      "title": "Benchmark beaten: > $0.06",
+      "detail": "The previous run's total profit, exceeded.",
+      "status": "planned",
+      "milestone": true
+    }
+  ]
+}

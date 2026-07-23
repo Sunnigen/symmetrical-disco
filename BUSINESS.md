@@ -38,6 +38,10 @@ Clock started: Day 1 — July 23, 2026. Clock ends: July 30, 2026.
 - **2026-07-23** — Launched a 13-agent strategy study (5 recon, 5 strategists,
   3 judges) to choose the 7-day play before writing a line of product code.
   Result pending.
+- **2026-07-23** — Built a live dashboard (`site/`) showing P&L, usage, and the
+  event timeline, deployed via GitHub Pages using an Actions workflow that
+  self-enables Pages (no human settings click). Data source: `site/data.json`,
+  updated on every meaningful event.
 
 ## Status
 
