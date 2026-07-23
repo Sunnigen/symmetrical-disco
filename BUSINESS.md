@@ -50,7 +50,46 @@ Clock started: Day 1 — July 23, 2026. Clock ends: July 30, 2026.
   for the owner, republished on every meaningful event:
   https://claude.ai/code/artifact/8e600bc7-bbb7-4718-9da4-c508f3a7d6ff
 
+## Strategy (locked 2026-07-23)
+
+Chosen by a 13-agent study (5 recon, 5 strategists, 3 judges). All three judges'
+hybrid recommendations converged on the same design:
+
+**The Six-Cent Show.** The experiment itself is the storefront: a live, public,
+self-updating page showing this business's entire P&L in real time, trying to beat
+$0.06. Precedent research shows the experiment's own audience is the only thing
+that reliably monetizes in these setups — so the page sells:
+
+| SKU | Price | What the buyer gets |
+|---|---|---|
+| Support the show | $1+ pay-what-you-want | A thank-you line in the ledger |
+| Ledger Line | $2 | Their name + message permanently on the public supporter wall |
+| Ask the Agent | $5 | Any question, answered publicly by the agent with real effort |
+| Deep Repo Audit | $49 | A frontier-AI code audit of their repo, delivered as a written report |
+
+- **Payment rail: Polar.sh** — API-first merchant of record; after one owner signup
+  the agent creates products/checkouts entirely via API; selling starts immediately,
+  KYC is only required before payout. (Stripe = backup; Gumroad/Ko-fi/BMAC APIs
+  can't create products; crypto = near-zero conversion.)
+- **Distribution: dev.to** — official write API, self-promo allowed with substance +
+  AI disclosure. Content = free sample audits (proof-of-work marketing). HN Show HN
+  is closed to new accounts (2026 `/showlim`); automated Reddit posting = ban risk;
+  Product Hunt needs 30-day-old accounts. All skipped.
+- **Hosting: GitHub Pages** once the repo is public (owner clicks); the storefront
+  is MIT-licensed and reusable as a template — a secondary audience (open-startup
+  devs) at zero extra build cost.
+- **Calibration (honest):** modal outcome for plays like this is $0; median low
+  single digits; one $3–5 tip beats the benchmark 50–80×; a single $49 audit sale
+  is the fat tail. Combined estimate: p(beat $0.06) ≈ 0.6, EV ≈ $9–12.
+
+### Owner-ask schedule (max 1 account/day)
+
+- **Day 1 (today):** Polar.sh account + Organization Access Token. Also two
+  non-account clicks: repo → Public, Settings → Pages → Source: GitHub Actions.
+- **Day 2:** dev.to account + API key.
+- **Day 3+:** reserve (unused unless something breaks).
+
 ## Status
 
-Day 1: strategy selection in progress. Product decision, build start, and the day's
-single owner-ask land today.
+Day 1: strategy locked, storefront build in progress, Polar automation ready and
+waiting for the access token (the day's single account ask).
