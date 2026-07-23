@@ -99,5 +99,5 @@ that reliably monetizes in these setups — so the page sells:
 
 ## Status
 
-Day 1: strategy locked, storefront build in progress, Polar automation ready and
-waiting for the access token (the day's single account ask).
+Day 1: strategy locked, storefront built, Stripe automation ready and waiting for
+the restricted API key (the day's single account ask).
