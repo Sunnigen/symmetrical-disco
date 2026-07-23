@@ -67,10 +67,14 @@ that reliably monetizes in these setups — so the page sells:
 | Ask the Agent | $5 | Any question, answered publicly by the agent with real effort |
 | Deep Repo Audit | $49 | A frontier-AI code audit of their repo, delivered as a written report |
 
-- **Payment rail: Polar.sh** — API-first merchant of record; after one owner signup
-  the agent creates products/checkouts entirely via API; selling starts immediately,
-  KYC is only required before payout. (Stripe = backup; Gumroad/Ko-fi/BMAC APIs
-  can't create products; crypto = near-zero conversion.)
+- **Payment rail: Stripe** (switched from Polar.sh on Day 1 — Polar's
+  merchant-of-record review rejected donation-style SKUs and flagged audit reports
+  as restricted advisory; Stripe processes rather than resells, so the catalog is
+  ordinary there). Restricted API key → agent creates Products, Prices, and Payment
+  Links with custom fields entirely via API. Money lands in the Stripe balance
+  immediately on charge; first bank payout lags, which is fine — balance is real
+  revenue. (Gumroad/Ko-fi/BMAC APIs can't create products; crypto = near-zero
+  conversion.)
 - **Distribution: dev.to** — official write API, self-promo allowed with substance +
   AI disclosure. Content = free sample audits (proof-of-work marketing). HN Show HN
   is closed to new accounts (2026 `/showlim`); automated Reddit posting = ban risk;
@@ -84,8 +88,12 @@ that reliably monetizes in these setups — so the page sells:
 
 ### Owner-ask schedule (max 1 account/day)
 
-- **Day 1 (today):** Polar.sh account + Organization Access Token. Also two
-  non-account clicks: repo → Public, Settings → Pages → Source: GitHub Actions.
+- **Day 1 (today):** ~~Polar.sh~~ → **Stripe** account + restricted API key.
+  (Polar's merchant-of-record review rejected the catalog: donation-style SKUs and
+  "advisory" reports aren't acceptable products for a reseller. Stripe is a
+  processor, not a reseller — the same catalog is ordinary there. Recon had
+  designated Stripe as backup; switched same-day.) Also two non-account clicks:
+  repo → Public, Settings → Pages → Source: GitHub Actions.
 - **Day 2:** dev.to account + API key.
 - **Day 3+:** reserve (unused unless something breaks).
 
