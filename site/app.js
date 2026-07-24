@@ -24,6 +24,16 @@ function dayList(start, end) {
   return out;
 }
 
+// Derive the experiment day from the wall clock so the counter never goes stale.
+// Day 1 = the start date (UTC midnight). Clamped to [1, days_total].
+function experimentDay(data) {
+  const start = Date.parse(data.start + "T00:00:00Z");
+  const now = new Date();
+  const todayUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const d = Math.floor((todayUTC - start) / 86400000) + 1;
+  return Math.min(Math.max(d, 1), data.days_total);
+}
+
 const SKU_COPY = {
   "Support the Show": {
     short: "Support the Show",
@@ -59,22 +69,33 @@ function render(data, productsDoc) {
   const beaten = profit > target;
   const pct = Math.min(100, (profit / (target * 2)) * 100);
 
-  // Price ladder: live checkout links if present, otherwise coming-soon state.
+  const day = experimentDay(data);
+  const daysLeft = Math.max(0, data.days_total - day);
+
+  // Price ladder: prices come from the live product data (products.json), so the
+  // displayed amount can never drift from what the checkout actually charges.
   const products = (productsDoc && productsDoc.products) || [];
   const ladderEntries = Object.keys(SKU_COPY).map(key => {
     const live = products.find(p => p.name.startsWith(key));
     const c = SKU_COPY[key];
-    return { ...c, url: live ? live.checkout_url : null };
+    let price = c.price;
+    if (live) {
+      if (live.pwyw_min_usd != null) price = "$" + live.pwyw_min_usd + "+";
+      else if (live.price_usd != null) price = "$" + live.price_usd;
+    }
+    return { ...c, price, url: live ? live.checkout_url : null };
   });
 
-  const supporters = (data.supporters || []).filter(s => s.moderated !== "rejected");
+  // Only entries reviewed for basic decency appear. Unreviewed (moderated:false)
+  // rows stay off the public wall until an operator approves them.
+  const supporters = (data.supporters || []).filter(s => s.moderated === true || s.moderated === "approved");
   const qa = data.qa || [];
   const u = data.usage || {};
 
   root.innerHTML = `
   <div class="wrap">
     <header class="hero">
-      <div class="eyebrow">A live experiment · Day ${data.day} of ${data.days_total}</div>
+      <div class="eyebrow">A live experiment · Day ${day} of ${data.days_total}</div>
       <h1>The Six-Cent Show</h1>
       <p class="pitch">An AI agent inherited an empty repository, a budget of zero dollars, and seven days
       to make real profit. The last agent that tried made six cents. This page is its entire
@@ -83,7 +104,7 @@ function render(data, productsDoc) {
         <div class="meter-top">
           <span class="meter-value ${beaten ? "good" : ""}">${fmtUSD(profit)}</span>
           <span class="meter-label">profit so far${beaten ? " — benchmark beaten" : ""}</span>
-          <span class="meter-days">${Math.max(0, data.days_total - data.day)} days left · ends ${fmtDate(data.end)}</span>
+          <span class="meter-days">${daysLeft} ${daysLeft === 1 ? "day" : "days"} left · ends ${fmtDate(data.end)}</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill" style="width:${pct}%"></div>
@@ -115,7 +136,7 @@ function render(data, productsDoc) {
 
     <section class="block">
       <h2>Supporter wall</h2>
-      <p class="desc">Every Ledger Line lives here permanently.</p>
+      <p class="desc">Every Ledger Line lives here permanently, once reviewed for basic decency.</p>
       <div class="card wall">
         ${supporters.length
           ? supporters.map(s => `
@@ -128,18 +149,18 @@ function render(data, productsDoc) {
       </div>
     </section>
 
-    ${qa.length ? `
     <section class="block">
       <h2>Ask the Agent — public answers</h2>
       <div class="card">
-        ${qa.map(q => `
+        ${qa.length ? qa.map(q => `
           <div class="qa-item">
             <div class="qa-q">${esc(q.question)}</div>
             <div class="qa-a">${q.answer ? esc(q.answer) : "<em>Answer in progress — due within 24h of purchase.</em>"}</div>
             <div class="qa-meta">asked by ${esc(q.name || "Anonymous")} · ${fmtDate(q.date)}</div>
-          </div>`).join("")}
+          </div>`).join("")
+          : `<p class="empty">No questions yet. The first one gets answered in public, permanently.</p>`}
       </div>
-    </section>` : ""}
+    </section>
 
     <section class="block">
       <h2>The numbers</h2>
@@ -148,7 +169,7 @@ function render(data, productsDoc) {
         ${tile("Revenue", fmtUSD(data.revenue_usd))}
         ${tile("Expenses", fmtUSD(data.expenses_usd))}
         ${tile("Profit", fmtUSD(profit), `benchmark: ${fmtUSD(target)}`, beaten ? "good" : "")}
-        ${tile("Days left", String(Math.max(0, data.days_total - data.day)), `ends ${fmtDate(data.end)}`)}
+        ${tile("Days left", String(daysLeft), `ends ${fmtDate(data.end)}`)}
       </div>
       <div class="usage">
         ${tile("Sessions", u.sessions ?? "–")}
@@ -161,13 +182,14 @@ function render(data, productsDoc) {
 
     <section class="block">
       <h2>Cumulative profit</h2>
-      <p class="desc">Running total across the 7 days, against the $0.06 benchmark.</p>
+      <p class="desc">Running total across the ${data.days_total} days, against the $0.06 benchmark.</p>
       <div class="card">
         <div class="chart-scroll">
           <div id="chart" tabindex="0" role="img" aria-label="Line chart of cumulative profit by day. Use arrow keys to step through values.">
             <div id="tooltip"></div>
           </div>
         </div>
+        <div class="scroll-hint">Swipe the chart to see the full week →</div>
         <details class="table-view">
           <summary>View as table</summary>
           <table id="profit-table">
@@ -203,7 +225,7 @@ function render(data, productsDoc) {
         </ul>
         <p>The page, the tooling, and the full decision log are open source (MIT) in the
         <a href="https://github.com/Sunnigen/symmetrical-disco">repository</a>. Payments are processed
-        by Polar.sh as merchant of record.</p>
+        securely by Stripe; the seller of record is the project's human owner.</p>
       </div>
     </section>
 

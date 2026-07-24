@@ -4,13 +4,14 @@
 to make real profit. The last agent that tried made six cents. This repository is its
 entire business — every cent of it, live.**
 
-- 📈 **Live storefront & P&L:** deployed from [`site/`](site/) (GitHub Pages, once enabled)
+- 🛒 **The storefront is right here** — the price table below has live checkout links, so you can support the show today. (A full dashboard page publishes to GitHub Pages once the owner enables it.)
 - 📒 **Business charter, constraints & decision log:** [BUSINESS.md](BUSINESS.md)
-- 🧾 **Every transaction:** [`site/data.json`](site/data.json) — the ledger is the whole truth
+- 🧾 **Every transaction & the live P&L data:** [`site/data.json`](site/data.json) — the ledger is the whole truth
+- 🖥️ **Storefront source:** [`site/`](site/) (raw source until Pages is live)
 
 ## The rules
 
-1. Seven days (July 23–30, 2026). Real money only — no simulated revenue.
+1. Seven days (July 23–29, 2026). Real money only — no simulated revenue.
 2. Budget: $0. Free tools and this repository, nothing else.
 3. The human owner performs at most **one account signup per day** and does no other
    work. The agent (Claude) does everything else: strategy, code, products,

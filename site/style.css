@@ -4,11 +4,12 @@
   --surface-1:      #fcfcfb;
   --text-primary:   #0b0b0b;
   --text-secondary: #52514e;
-  --text-muted:     #898781;
+  --text-muted:     #6b6a63;
   --grid:           #e1e0d9;
   --baseline:       #c3c2b7;
   --border:         rgba(11,11,11,0.10);
   --series-1:       #2a78d6;
+  --accent-cta:     #1863b5;
   --status-good:    #0ca30c;
   --delta-good:     #006300;
 }
@@ -101,9 +102,10 @@ section.block > .desc { color: var(--text-muted); font-size: 0.85rem; margin: 0 
 .sku h3 { margin: 0; font-size: 0.95rem; }
 .sku p { margin: 0; color: var(--text-secondary); font-size: 0.83rem; flex-grow: 1; }
 .sku .buy {
-  display: inline-block; margin-top: 10px; text-align: center; text-decoration: none;
-  border-radius: 8px; padding: 8px 12px; font-size: 0.88rem; font-weight: 600;
-  background: var(--series-1); color: #fff; border: 1px solid transparent;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 44px; margin-top: 10px; text-align: center; text-decoration: none;
+  border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; font-weight: 600;
+  background: var(--accent-cta); color: #fff; border: 1px solid transparent;
 }
 .sku .buy:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
 .sku .buy.disabled {
@@ -137,8 +139,10 @@ section.block > .desc { color: var(--text-muted); font-size: 0.85rem; margin: 0 
 .usage .tile .value { font-size: 1.25rem; }
 
 /* ---- Chart ---- */
-.chart-scroll { overflow-x: auto; }
-#chart { position: relative; min-width: 520px; }
+.chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.scroll-hint { display: none; color: var(--text-secondary); font-size: 0.75rem; margin-top: 6px; }
+@media (max-width: 560px) { .scroll-hint { display: block; } }
+#chart { position: relative; min-width: 480px; }
 #chart svg { display: block; width: 100%; height: auto; }
 #chart:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; border-radius: 6px; }
 #tooltip {

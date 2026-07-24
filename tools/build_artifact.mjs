@@ -5,6 +5,7 @@
 // Usage: node tools/build_artifact.mjs <output-path>
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { execSync } from "node:child_process";
 
 const out = process.argv[2];
 if (!out) { console.error("usage: build_artifact.mjs <output-path>"); process.exit(1); }
@@ -12,7 +13,15 @@ if (!out) { console.error("usage: build_artifact.mjs <output-path>"); process.ex
 const dir = new URL("../site/", import.meta.url);
 const css = readFileSync(new URL("style.css", dir), "utf8");
 const js = readFileSync(new URL("app.js", dir), "utf8");
-const data = readFileSync(new URL("data.json", dir), "utf8");
+
+// Stamp the exact commit count into the inlined data so the owner artifact never
+// drifts. (`day` self-corrects at render time from the wall clock; commits can't.)
+const parsed = JSON.parse(readFileSync(new URL("data.json", dir), "utf8"));
+try {
+  parsed.usage = parsed.usage || {};
+  parsed.usage.commits = Number(execSync("git rev-list --count HEAD", { cwd: new URL(".", dir) }).toString().trim());
+} catch {}
+const data = JSON.stringify(parsed);
 let products = "null";
 try { products = readFileSync(new URL("products.json", dir), "utf8"); } catch {}
 

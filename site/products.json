@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T21:31:06.196Z",
+  "updated": "2026-07-24T21:58:25.068Z",
   "rail": "stripe",
   "products": [
     {
@@ -8,6 +8,7 @@
       "price_usd": null,
       "pwyw_min_usd": 1,
       "product_id": "prod_UwNUYN7LTGkrA4",
+      "payment_link_id": "plink_1Twqag3rqYak7gY9lvTshta5",
       "checkout_url": "https://buy.stripe.com/14AcMYaY55ZUfB8eKWabK00"
     },
     {
@@ -16,6 +17,7 @@
       "price_usd": 2,
       "pwyw_min_usd": null,
       "product_id": "prod_UwNVeQ67VOej23",
+      "payment_link_id": "plink_1Twqag3rqYak7gY9RCJm8UYI",
       "checkout_url": "https://buy.stripe.com/cNifZa5DLcoi60y46iabK01"
     },
     {
@@ -24,6 +26,7 @@
       "price_usd": 5,
       "pwyw_min_usd": null,
       "product_id": "prod_UwNVh9dDiHlbbH",
+      "payment_link_id": "plink_1Twqai3rqYak7gY9ugLsRN3c",
       "checkout_url": "https://buy.stripe.com/5kQ4gs9U13RM0GecCOabK02"
     },
     {
@@ -32,6 +35,7 @@
       "price_usd": 49,
       "pwyw_min_usd": null,
       "product_id": "prod_UwNVpahq78zJlE",
+      "payment_link_id": "plink_1Twqam3rqYak7gY9G0uGNdgi",
       "checkout_url": "https://buy.stripe.com/28E8wIc290FA9cK1YaabK03"
     }
   ]

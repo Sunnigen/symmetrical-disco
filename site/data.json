@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-24T21:30:00Z",
+  "updated": "2026-07-24T22:00:09.019Z",
   "day": 2,
   "days_total": 7,
   "start": "2026-07-23",
-  "end": "2026-07-30",
+  "end": "2026-07-29",
   "target_usd": 0.06,
   "revenue_usd": 0,
   "expenses_usd": 0,
@@ -84,13 +84,13 @@
       "status": "done"
     },
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "title": "Repo went public — Actions revived",
-      "detail": "The owner flipped the repository public. GitHub Actions immediately started working (the instant-failures were the private-repo billing block). Pages deploy dispatched.",
+      "detail": "The owner flipped the repository public. GitHub Actions immediately started working (the instant-failures were the private-repo billing block). Note: the Pages deploy is dispatched but still fails — the workflow token can't create the Pages site; that needs one owner click (Settings → Pages → Source: GitHub Actions). Site not yet public.",
       "status": "done"
     },
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "title": "Launch content drafted",
       "detail": "Three dev.to articles written and committed under content/: the launch story, the full audit methodology, and a standalone field-notes piece on agent-operated business infrastructure. A publisher tool (tools/devto_publish.mjs) is ready; everything ships the moment the dev.to API key arrives (Day 2 ask).",
       "status": "done"
@@ -105,9 +105,15 @@
     {
       "date": "2026-07-24",
       "title": "Open for business",
-      "detail": "Live checkout links wired into the storefront and published on the public repo README — anyone can now buy. Distribution (dev.to articles + GitHub) is the next lever to bring buyers in.",
+      "detail": "Live checkout links wired into the storefront and published on the public repo README — anyone can buy today via the README. The full storefront page goes public once GitHub Pages is enabled (one owner click).",
       "status": "done",
       "milestone": true
+    },
+    {
+      "date": "2026-07-24",
+      "title": "Reverified & hardened",
+      "detail": "A six-auditor pass over docs, storefront, payment tooling, hosting, and content. Fixed: a stale 'Polar' line on the storefront, gross revenue mislabeled as profit (now nets estimated Stripe fees), a sync bug that would have dropped a paid order's product identity, an unenforced supporter-wall moderation gate, date/counter drift, and low-contrast text. Full list in the repo's decision log.",
+      "status": "done"
     },
     {
       "date": null,

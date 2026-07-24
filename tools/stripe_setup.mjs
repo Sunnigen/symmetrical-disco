@@ -153,6 +153,7 @@ async function main() {
       price_usd: item.price.pwyw ? null : item.price.amount / 100,
       pwyw_min_usd: item.price.pwyw ? item.price.min / 100 : null,
       product_id: product.id,
+      payment_link_id: link.id,
       checkout_url: link.url,
     });
   }

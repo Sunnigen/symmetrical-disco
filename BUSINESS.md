@@ -14,7 +14,9 @@ ledger, and eventually its product.
 | Expenses | $0.00 |
 | **Profit** | **$0.00** |
 
-Clock started: Day 1 — July 23, 2026. Clock ends: July 30, 2026.
+7-day window: Day 1 = July 23, 2026; Day 7 = **July 29, 2026** (UTC). Revenue is
+gross; profit nets Stripe's fees, estimated at 2.9% + $0.30 per charge (the scoped
+API key can't read the exact fee, so the figure is an honest estimate until payout).
 
 ## Constraints (binding)
 
@@ -41,14 +43,39 @@ Clock started: Day 1 — July 23, 2026. Clock ends: July 30, 2026.
 - **2026-07-23** — Built a live dashboard (`site/`) showing P&L, usage, and the
   event timeline. Data source: `site/data.json`, updated on every meaningful
   event.
-- **2026-07-23** — GitHub Pages route abandoned after empirical testing: Actions
-  runs on this repo fail at startup in ~3 seconds (even a bare `echo` workflow —
-  likely account billing/limits), and Pages requires a public repo on the free
-  plan anyway. The deploy workflow is kept as manual-dispatch only. Finding
-  logged as a hosting constraint for the strategy phase.
-- **2026-07-23** — Dashboard published instead as a private claude.ai artifact
-  for the owner, republished on every meaningful event:
-  https://claude.ai/code/artifact/8e600bc7-bbb7-4718-9da4-c508f3a7d6ff
+- **2026-07-23** — GitHub Pages route deferred after empirical testing: while the
+  repo was still private, Actions runs failed at startup in ~3 seconds (the
+  private-repo billing block), and Pages requires a public repo on the free plan.
+  The dashboard was mirrored instead as a private claude.ai artifact for the owner,
+  republished on every meaningful event. (URL kept out of this public file.)
+- **2026-07-23** — Payment rail pivot: Polar → Stripe. Polar's merchant-of-record
+  review rejected the catalog (donation-style SKUs + "advisory" audit reports).
+  Stripe is a processor, not a reseller, so the same catalog is ordinary there.
+  The full pipeline (products, prices, payment links, order sync) was verified in
+  Stripe **test mode** the same hour.
+- **2026-07-23** — Stripe "Managed Payments" (Stripe's own merchant-of-record layer,
+  now on by default for new accounts) was opted out per payment-link with
+  `managed_payments[enabled]=false`, so the project stays a plain-processor sale —
+  the exact distinction that had killed the Polar route.
+- **2026-07-24** — Repo made public (owner) + MIT license added. GitHub Actions
+  began working immediately, confirming the earlier failures were the private-repo
+  billing block, not a workflow bug.
+- **2026-07-24** — Three dev.to launch articles drafted (`content/dev-to/`) plus a
+  publisher tool (`tools/devto_publish.mjs`); everything waits on a dev.to API key.
+- **2026-07-24** — Payment rail **LIVE**. Owner completed Stripe activation and
+  provided a scoped restricted key; the agent created all four products, prices,
+  and hosted checkout links on the live account (verified `livemode=true`,
+  `active=true`, all links HTTP 200). Live buy links published on the README.
+- **2026-07-24** — Day-2 reverification pass (six automated auditors over docs,
+  storefront, payment tooling, hosting, content). Fixes applied: corrected a stale
+  "Polar" line on the public storefront; the dashboard now reports **net** profit
+  (revenue minus **estimated** Stripe fees at 2.9% + $0.30 — the restricted key
+  can't read the exact fee) rather than gross labeled as profit; hardened
+  `stripe_sync` so a paid order's product identity resolves via its payment-link id
+  (the old path relied on session metadata that isn't always set); the
+  supporter-wall moderation gate now actually blocks unreviewed messages; fixed
+  date/day-counter drift (the 7-day window is Jul 23–29, and the day counter is now
+  derived from the clock); and raised low-contrast text/CTA to WCAG AA.
 
 ## Strategy (locked 2026-07-23)
 
@@ -88,16 +115,19 @@ that reliably monetizes in these setups — so the page sells:
 
 ### Owner-ask schedule (max 1 account/day)
 
-- **Day 1 (today):** ~~Polar.sh~~ → **Stripe** account + restricted API key.
-  (Polar's merchant-of-record review rejected the catalog: donation-style SKUs and
-  "advisory" reports aren't acceptable products for a reseller. Stripe is a
-  processor, not a reseller — the same catalog is ordinary there. Recon had
-  designated Stripe as backup; switched same-day.) Also two non-account clicks:
-  repo → Public, Settings → Pages → Source: GitHub Actions.
-- **Day 2:** dev.to account + API key.
-- **Day 3+:** reserve (unused unless something breaks).
+- **Day 1 (Jul 23):** repo → Public (done) + Stripe signup started.
+- **Day 2 (Jul 24):** Stripe activation + restricted API key (**done — rail is LIVE**).
+- **Day 3 (Jul 25):** dev.to account + API key → publishes the three launch articles.
+- Still-open non-account click (any time): **Settings → Pages → Build and
+  deployment → Source: GitHub Actions** — one click, unlocks the public storefront
+  URL. Must be "GitHub Actions", not "Deploy from a branch".
+- **Day 4+:** reserve (unused unless something breaks).
 
 ## Status
 
-Day 1: strategy locked, storefront built, Stripe automation ready and waiting for
-the restricted API key (the day's single account ask).
+**Day 2 — the rail is live.** Real checkout works and is verified; the four live buy
+links are on the public README, so the business can take money today. What's left is
+distribution (get buyers to the links) and one owner click to publish the full
+storefront page. Blocking items: the dev.to API key (Day 3 ask, for the articles)
+and the Pages source click (for the public storefront URL). Neither blocks taking a
+first sale via the README.
