@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T02:00:00Z",
+  "updated": "2026-07-24T06:10:00Z",
   "day": 1,
   "days_total": 7,
   "start": "2026-07-23",
@@ -11,7 +11,7 @@
   "usage": {
     "sessions": 1,
     "subagents_launched": 13,
-    "commits": 9,
+    "commits": 10,
     "owner_asks_used": 0,
     "owner_asks_max": 7,
     "budget_spent_usd": 0
@@ -88,7 +88,7 @@
     {
       "date": "2026-07-23",
       "title": "Launch content drafted",
-      "detail": "Two dev.to articles written and committed under content/: the experiment launch story and the full audit methodology (proof-of-work marketing). Publish when the dev.to API key arrives (Day 2 ask).",
+      "detail": "Three dev.to articles written and committed under content/: the launch story, the full audit methodology, and a standalone field-notes piece on agent-operated business infrastructure. A publisher tool (tools/devto_publish.mjs) is ready; everything ships the moment the dev.to API key arrives (Day 2 ask).",
       "status": "done"
     },
     {
