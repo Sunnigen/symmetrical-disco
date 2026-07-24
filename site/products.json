@@ -1,4 +1,38 @@
 {
-  "updated": null,
-  "products": []
+  "updated": "2026-07-24T21:31:06.196Z",
+  "rail": "stripe",
+  "products": [
+    {
+      "name": "Support the Show (pay what you want)",
+      "sku": "support",
+      "price_usd": null,
+      "pwyw_min_usd": 1,
+      "product_id": "prod_UwNUYN7LTGkrA4",
+      "checkout_url": "https://buy.stripe.com/14AcMYaY55ZUfB8eKWabK00"
+    },
+    {
+      "name": "Ledger Line — your message on the wall ($2)",
+      "sku": "ledger_line",
+      "price_usd": 2,
+      "pwyw_min_usd": null,
+      "product_id": "prod_UwNVeQ67VOej23",
+      "checkout_url": "https://buy.stripe.com/cNifZa5DLcoi60y46iabK01"
+    },
+    {
+      "name": "Ask the Agent ($5)",
+      "sku": "ask",
+      "price_usd": 5,
+      "pwyw_min_usd": null,
+      "product_id": "prod_UwNVh9dDiHlbbH",
+      "checkout_url": "https://buy.stripe.com/5kQ4gs9U13RM0GecCOabK02"
+    },
+    {
+      "name": "Deep Repo Audit ($49)",
+      "sku": "audit",
+      "price_usd": 49,
+      "pwyw_min_usd": null,
+      "product_id": "prod_UwNVpahq78zJlE",
+      "checkout_url": "https://buy.stripe.com/28E8wIc290FA9cK1YaabK03"
+    }
+  ]
 }

@@ -20,19 +20,19 @@ entire business — every cent of it, live.**
 
 ## What's for sale
 
-| | Price | What you get |
-|---|---|---|
-| Support the Show | $1+ PWYW | A line on the ledger of history's most watched six cents |
-| Ledger Line | $2 | Your name + message, permanently on the public supporter wall |
-| Ask the Agent | $5 | Any question, answered publicly with real research within 24h |
-| Deep Repo Audit | $49 | A frontier-AI audit of your repo — architecture, bugs, security — in 48h |
+| | Price | What you get | |
+|---|---|---|---|
+| Support the Show | $1+ PWYW | A line on the ledger of history's most watched six cents | [**Buy →**](https://buy.stripe.com/14AcMYaY55ZUfB8eKWabK00) |
+| Ledger Line | $2 | Your name + message, permanently on the public supporter wall | [**Buy →**](https://buy.stripe.com/cNifZa5DLcoi60y46iabK01) |
+| Ask the Agent | $5 | Any question, answered publicly with real research within 24h | [**Buy →**](https://buy.stripe.com/5kQ4gs9U13RM0GecCOabK02) |
+| Deep Repo Audit | $49 | A frontier-AI audit of your repo — architecture, bugs, security — in 48h | [**Buy →**](https://buy.stripe.com/28E8wIc290FA9cK1YaabK03) |
 
-Payments are processed by [Polar.sh](https://polar.sh) as merchant of record.
-Checkout links go live on the storefront the moment the payment rail is connected.
+Payments are processed securely by [Stripe](https://stripe.com); every sale is
+recorded on the [live ledger](site/data.json). AI-generated content, disclosed as such.
 
 ## Reuse this
 
-The whole thing — the live-P&L storefront in [`site/`](site/), the Polar catalog and
+The whole thing — the live-P&L storefront in [`site/`](site/), the Stripe catalog and
 order-sync automation in [`tools/`](tools/) — is MIT-licensed. If you want an
 open-revenue page for your own project: fork, edit `site/data.json`, done.
 

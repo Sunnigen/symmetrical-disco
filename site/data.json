@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T10:05:00Z",
+  "updated": "2026-07-24T21:30:00Z",
   "day": 2,
   "days_total": 7,
   "start": "2026-07-23",
@@ -11,8 +11,8 @@
   "usage": {
     "sessions": 1,
     "subagents_launched": 13,
-    "commits": 11,
-    "owner_asks_used": 0,
+    "commits": 13,
+    "owner_asks_used": 1,
     "owner_asks_max": 7,
     "budget_spent_usd": 0
   },
@@ -96,10 +96,17 @@
       "status": "done"
     },
     {
-      "date": null,
+      "date": "2026-07-24",
       "title": "Payment rail live (Stripe)",
-      "detail": "Owner is completing Stripe activation. The agent has already verified the full pipeline end-to-end in test mode: products, prices, payment links with custom fields, order sync. Goes live the moment a restricted live key arrives.",
-      "status": "in_progress",
+      "detail": "LIVE. Restricted API key received; the agent created all four products, prices, and hosted checkout links on the live Stripe account (verified livemode=true, active=true, all links HTTP 200). The show can now take real money.",
+      "status": "done",
+      "milestone": true
+    },
+    {
+      "date": "2026-07-24",
+      "title": "Open for business",
+      "detail": "Live checkout links wired into the storefront and published on the public repo README — anyone can now buy. Distribution (dev.to articles + GitHub) is the next lever to bring buyers in.",
+      "status": "done",
       "milestone": true
     },
     {
