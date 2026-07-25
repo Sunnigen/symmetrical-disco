@@ -1,0 +1,31 @@
+{
+  "name": "shipcheck",
+  "version": "0.1.0",
+  "description": "Fast, dependency-free pre-ship security scan for app code. No AI at runtime, no API key, no code execution — it reads your files and flags the highest-signal mistakes.",
+  "bin": {
+    "shipcheck": "bin/scan.js"
+  },
+  "keywords": [
+    "security",
+    "sast",
+    "secrets",
+    "audit",
+    "scanner",
+    "devsecops",
+    "pre-commit",
+    "ci",
+    "vibe-coding",
+    "ai-generated-code"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "bin/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sunnigen/symmetrical-disco"
+  }
+}
